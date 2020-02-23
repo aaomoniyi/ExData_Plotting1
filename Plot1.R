@@ -12,10 +12,12 @@ powerDT[, Date := lapply(.SD, as.Date, "%d/%m/%Y"), .SDcols = c("Date")]
 # Filter Dates for 2007-02-01 and 2007-02-02
 powerDT <- powerDT[(Date >= "2007-02-01") & (Date <= "2007-02-02")]
 
-png("plot1.png", width=480, height=480)
 
 ## Plot 1
 
 Plot1 <- hist(powerDT[, Global_active_power], main="Global Active Power", 
      xlab="Global Active Power (kilowatts)", ylab="Frequency", col="Red")
 
+## Saving to file
+dev.copy(png, file="plot1.png", height=480, width=480)
+dev.off()
